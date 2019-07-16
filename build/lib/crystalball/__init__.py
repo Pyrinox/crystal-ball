@@ -4,7 +4,7 @@ import csv
 import os
 import seaborn as sns
 import matplotlib.pyplot as plt
-from  builtins import any
+from builtins import any
 
 class CrystalBall:
     
@@ -67,55 +67,87 @@ class CrystalBall:
                     continue
         return CrystalBall(list_of_csvs, csvname_to_colnames_list, csvname_to_IDs, csvname_to_nonIDs, all_IDs, all_nonIDs, csvname_to_one_ID)
 
-    def contains(self, keywords: list, all_colnames: list=None) -> list:    
+    def contains(self, keywords: list, colnames: list=None) -> list:    
 
         """
-        PURPOSE: 
+        **_Purpose:_**
         - Determine whether a keyword (substring) exists in a given list of column names (strings). 
         - Note: This search is case sensitive!
+
+        **_Parameters:_**
+        - **keywords** (list of strings)
+            - List of key words that the user is interested in
+        - **colnames** (list of strings)
+            - List of column names of a table, or for many tables. 
+            - If no argument is provided, this function will use the column names generated when the run method was called.
         
-        PARAMETERS:
-        - keywords [list of strings]: a key word
-        - all_colnames [list of strings]: 
-            List of column names of a table, or for many tables. 
-            If no argument is provided, this function will use the column names generated when the run method was called.
+        **_Returns:_**
+        - **list** (a list of bools): 
+            - Each index corresponds to a keyword. 
+            - For each index, True if substring exists in list of strings, otherwise False.
 
-        RETURNS:
-        - a boolean: True if substring exists in list of strings, otherwise False.
-
-        EXAMPLES:
-        - Example 1:
-            colnames = ['id', 'name', 'title']
-            CrystalBall.contains('name', colnames) returns True
-            CrystalBall('Name', colnames) returns False
+        **_Examples:_**
+        ```python
+        colnames = ['id', 'name', 'title']
+        cb.contains(['name'], colnames) # returns [True]
+        cb.contains(['Name'], colnames) # returns [False]
+        cb.contains(['name', 'Name'], colnames) # returns [True, False]
+        ```
         """
         
-        if all_colnames is None:
-            return [any(keyword in colname for colname in self.all_colnames) for keyword in keywords]
+        if colnames is None:
+            return [any(keyword in colname for colname in self.colnames) for keyword in keywords]
         else:
-            return [any(keyword in colname for colname in all_colnames) for keyword in keywords]
+            return [any(keyword in colname for colname in colnames) for keyword in keywords]
 
         
-    def featureSearch(self, keyword_list, all_colnames=None, mode='UNION'):
+    def featureSearch(self, keywords, colnames=None, mode='UNION') -> list:
+         """
+        **_Purpose:_**
+        - Find features (column names) that contain the substrings specified in keywords. 
+        - Note: This search is case sensitive!
+
+        **_Parameters:_**
+        - **keywords** (list of strings)
+            - List of key words that the user is interested in
+        - **colnames** (list of strings)
+            - List of column names of a table, or for many tables. 
+            - If no argument is provided, this function will use the column names generated when the run method was called.
+        
+        **_Returns:_**
+        - **list** (list of features): 
+            - List will contain all features (column names) that contains one/all substrings found in keywords.
+            - List will be sorted in alphabetical order.
+
+        **_Examples:_**
+        ```python
+        colnames = ['id', 'name', 'nameType', 'subSpeciesName', 'title']
+        cb.featureSearch(['name'], colnames) # returns ['name', 'nameType']
+        cb.featureSearch(['Name'], colnames) # returns ['subSpeciesName']
+        cb.featureSearch(['name', 'Name'], colnames) # returns ['name', 'nameType', 'subSpeciesName']
+        ```
+        """
+        
         ##implement INTERSECTION mode later
-        if type(keyword_list) is not list:
-            raise Exception('keyword_list argument expects a list')
-        
-        if all_colnames is None:
+        def search(keywords, colnames):
             suggested_colnames = set()
-            for colname in self.all_colnames:
-                for keyword in keyword_list:
+            for colname in colnames:
+                for keyword in keywords:
                     if keyword in colname:
                         suggested_colnames.add(colname)
-            return list(suggested_colnames)
-        
-        else:
-            suggested_colnames = set()
-            for colname in all_colnames:
-                for keyword in keyword_list:
-                    if keyword in colname:
-                        suggested_colnames.add(colname)
-            return list(suggested_colnames)
+            return sorted(list(suggested_colnames))
+
+
+        if type(keywords) is not list:
+            raise Exception('keywords argument expects a list')
+        if mode is 'UNION':
+            if colnames is None:
+                return search(keyword_list, self.colnames)
+            else:
+                return search(keyword_list, colnames)
+        elif mode is "INTERSECTION":
+            print('to implement later')
+
 
         
     

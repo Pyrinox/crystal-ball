@@ -3,7 +3,7 @@ import setuptools
 
 setuptools.setup(
     name='crystal-ball',
-    version='0.1.0',
+    version='0.1.1',
     author='Winn Y Cui',
     author_email='winn.yc@berkeley.edu',
     packages=setuptools.find_packages(),
