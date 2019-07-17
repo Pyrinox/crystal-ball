@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to Crystal Ball’s documentation! &#8212; Crystal Ball 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-__init__">
+<span id="welcome-to-crystal-ball-s-documentation"></span><h1>Welcome to Crystal Ball’s documentation!<a class="headerlink" href="#module-__init__" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="__init__.CrystalBall">
+<em class="property">class </em><code class="sig-prename descclassname">__init__.</code><code class="sig-name descname">CrystalBall</code><span class="sig-paren">(</span><em class="sig-param">list_of_csvs: list</em>, <em class="sig-param">csvname_to_colnames_list: dict</em>, <em class="sig-param">csvname_to_IDs: dict</em>, <em class="sig-param">csvname_to_nonIDs: dict</em>, <em class="sig-param">all_IDs: list</em>, <em class="sig-param">all_nonIDs: list</em>, <em class="sig-param">csvname_to_one_ID: list</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="__init__.CrystalBall.analyzeRelationships">
+<code class="sig-name descname">analyzeRelationships</code><span class="sig-paren">(</span><em class="sig-param">to_analyze: list</em>, <em class="sig-param">visualize=True</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.analyzeRelationships" title="Permalink to this definition">¶</a></dt>
+<dd><p>Analyze basic stats of one or more different indexes.</p>
+<p>By comparing boxplots, you should be able to determine which indices are related.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>to_analyze</strong> (<em>list</em><em>[</em><em>list</em><em>[</em><em>str</em><em>, </em><em>Series</em><em>]</em><em>]</em>) – <ul class="simple">
+<li><p>A list of lists. The later should be of length two, in which the 0th index stores the table name and the 1st index contains a Series.</p></li>
+<li><p>The Series should contain the values of the column derived from the table associated with the name stored in the 0th index.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Table that contains basic stats about each given Series.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.compareRelationship">
+<code class="sig-name descname">compareRelationship</code><span class="sig-paren">(</span><em class="sig-param">to_analyze1</em>, <em class="sig-param">to_analyze2</em>, <em class="sig-param">visualize=False</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.compareRelationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compare and contrast the difference between two Series.</p>
+<p>By comparing boxplots, you should be able to determine which indices are related.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>to_analyze1</strong> (<em>list</em><em>[</em><em>str</em><em>, </em><em>Series</em><em>]</em>) – <ul>
+<li><p>A list that contains the name of the first table, and the contents of a specifc column from that table as a Series.</p></li>
+</ul>
+</p></li>
+<li><p><strong>to_analyze2</strong> (<em>list</em><em>[</em><em>str</em><em>, </em><em>Series</em><em>]</em>) – <ul>
+<li><p>A list that contains the name of the second table, and the contents of a specifc column from that table as a Series.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Table that contains basic stats about each given Series, as well as a third column that contains the difference between the stats.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.contains">
+<code class="sig-name descname">contains</code><span class="sig-paren">(</span><em class="sig-param">keywords: list</em>, <em class="sig-param">colnames: list = None</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#__init__.CrystalBall.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if keywords exist in colnames.</p>
+<ul class="simple">
+<li><p>Determine whether a keyword (substring) exists in a given list of column names (strings).</p></li>
+<li><p>Note: This search is case sensitive!</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>List of key words that the user is interested in</p></li>
+</ul>
+</p></li>
+<li><p><strong>colnames</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>List of column names of a table, or for many tables.</p></li>
+<li><p>If no argument is provided, this function will use the column names generated when the run method was called.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Each index corresponds to a keyword.</p></li>
+<li><p>For each index, True if substring exists in list of strings, otherwise False.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">contains</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[True]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">contains</span><span class="p">([</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[False]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">contains</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[True, False]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.export">
+<code class="sig-name descname">export</code><span class="sig-paren">(</span><em class="sig-param">df_to_export</em>, <em class="sig-param">write_to</em>, <em class="sig-param">export_type='CSV'</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.export" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports contents of dataframe to relative location specified by write_to parameter.</p>
+<ul class="simple">
+<li><p>Default export type is CSV</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df_to_export</strong> (<em>DataFrame</em>) – <ul>
+<li><p>DataFrame whose contents will be exported into a specifed location.</p></li>
+</ul>
+</p></li>
+<li><p><strong>write_to</strong> (<em>str</em>) – <ul>
+<li><p>Relative location (including file) that you will write into.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_type</strong> (<em>str</em>) – <ul>
+<li><p>Format that contents of df_to_export will be exported as.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.featureSearch">
+<code class="sig-name descname">featureSearch</code><span class="sig-paren">(</span><em class="sig-param">keywords</em>, <em class="sig-param">colnames=None</em>, <em class="sig-param">mode='UNION'</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#__init__.CrystalBall.featureSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the columns that contain the keywords.</p>
+<ul class="simple">
+<li><p>Find features (column names) that contain the substrings specified in keywords.</p></li>
+<li><p>Note: This search is case sensitive!</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>List of key words that the user is interested in</p></li>
+</ul>
+</p></li>
+<li><p><strong>colnames</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>List of column names of a table, or for many tables.</p></li>
+<li><p>If no argument is provided, this function will use the column names generated when the run method was called.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>List will contain all features (column names) that contains one/all substrings found in keywords.</p></li>
+<li><p>List will be sorted in alphabetical order.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">colnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;nameType&#39;</span><span class="p">,</span> <span class="s1">&#39;subSpeciesName&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">featureSearch</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[&#39;name&#39;, &#39;nameType&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">featureSearch</span><span class="p">([</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[&#39;subSpeciesName&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">featureSearch</span><span class="p">([</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">colnames</span><span class="p">)</span>
+<span class="go">[&#39;name&#39;, &#39;nameType&#39;, &#39;subSpeciesName&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.mergeTables">
+<code class="sig-name descname">mergeTables</code><span class="sig-paren">(</span><em class="sig-param">tables: list</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.mergeTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sequentially merge a list of tables that all share a common index.</p>
+<ul class="simple">
+<li><p>Merge defaults to using inner joins over the index.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tables</strong> (<em>list</em><em>[</em><em>DataFrame</em><em>]</em>) – <ul class="simple">
+<li><p>Contains a list of DataFrames that will be merged sequentially.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Table that results from sequentially merging the DataFrames given in the argument.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.openTable">
+<code class="sig-name descname">openTable</code><span class="sig-paren">(</span><em class="sig-param">rel_dir, indices=[0]</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.openTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the csv that is referenced by the given relative directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rel_dir</strong> (<em>str</em>) – <ul>
+<li><p>A path to the table that is relative to where the user is running Crystal Ball.</p></li>
+</ul>
+</p></li>
+<li><p><strong>indices</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – <ul>
+<li><p>Sets the (multi)index by columns represented by their numerical integer-locations.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>The DataFrame containing the contents of the csv.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.run">
+<em class="property">classmethod </em><code class="sig-name descname">run</code><span class="sig-paren">(</span><em class="sig-param">rel_dir</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the Crystal Ball object for a given directory that contains the CSVs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rel_dir</strong> (<em>str</em>) – <ul class="simple">
+<li><p>A string that contains the relative directory, which contains the CSVs to analyze.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>CrystalBall that has all class variables initialized by this run script.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#__init__.CrystalBall" title="__init__.CrystalBall">CrystalBall</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">relative_directory</span> <span class="o">=</span> <span class="s1">&#39;./folder1/folder2&#39;</span>
+<span class="n">crystalBall</span> <span class="o">=</span> <span class="n">CrystalBall</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">relative_directory</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.subTable">
+<code class="sig-name descname">subTable</code><span class="sig-paren">(</span><em class="sig-param">supertable</em>, <em class="sig-param">chosen_index: list</em>, <em class="sig-param">chosen_columns: list</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.subTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a subtable from a supertable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>supertable</strong> (<em>DataFrame</em>) – <ul>
+<li><p>Table from which to select chosen_columns from in order to form a subtable</p></li>
+</ul>
+</p></li>
+<li><p><strong>chosen_index</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>The column names that will form the new (multi)index for the subtable.</p></li>
+</ul>
+</p></li>
+<li><p><strong>chosen_columns</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>The column names that will form the new columns for the subtable.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>DataFrame (the newly-formed subtable) that will have the (multi)index and columns specified in the arguments.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>(link juptyer notebook)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="__init__.CrystalBall.tableSearch">
+<code class="sig-name descname">tableSearch</code><span class="sig-paren">(</span><em class="sig-param">keywords</em>, <em class="sig-param">csvname_to_colnames_list=None</em>, <em class="sig-param">mode='UNION'</em><span class="sig-paren">)</span><a class="headerlink" href="#__init__.CrystalBall.tableSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the tables that contain the keywords.</p>
+<ul class="simple">
+<li><p>Find tables that contain column names which have the substrings specified in keywords.</p></li>
+<li><p>Note: This search is case sensitive!</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keywords</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – <ul>
+<li><p>List of key words that the user is interested in</p></li>
+</ul>
+</p></li>
+<li><p><strong>csvname_to_colnames_list</strong> (<em>dict</em><em>[</em><em>str</em><em>] </em><em>= list</em>) – <ul>
+<li><p>Dictionary that maps a string (table name) to a list of column names it contains.</p></li>
+<li><p>If no argument is provided, this function will use the dictionary generated when the run method was called.</p></li>
+</ul>
+</p></li>
+<li><p><strong>mode</strong> (<em>str</em>) – <ul>
+<li><p>If mode is UNION, then return all tables that contain at least one keyword.</p></li>
+<li><p>If mode is INTERSECTION, then return all tables that contain all the keywords.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>List will contain all tables that contain a match with keywords.</p></li>
+<li><p>List will be sorted in alphabetical order.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">csvname_to_colnames_list</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;table1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;colName1&#39;</span><span class="p">,</span> <span class="s1">&#39;colName2&#39;</span><span class="p">],</span> <span class="s1">&#39;table2&#39;</span><span class="p">:[</span><span class="s1">&#39;colName3&#39;</span><span class="p">,</span> <span class="s1">&#39;colName4&#39;</span><span class="p">]}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">tableSearch</span><span class="p">([</span><span class="s1">&#39;colName1&#39;</span><span class="p">],</span> <span class="n">csvname_to_colnames_list</span><span class="p">)</span>
+<span class="go">[&#39;table1&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">tableSearch</span><span class="p">([</span><span class="s1">&#39;colName3&#39;</span><span class="p">],</span> <span class="n">csvname_to_colnames_list</span><span class="p">)</span>
+<span class="go">[&#39;table2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cb</span><span class="o">.</span><span class="n">tableSearch</span><span class="p">([</span><span class="s1">&#39;colName1&#39;</span><span class="p">,</span> <span class="s1">&#39;colName2&#39;</span><span class="p">],</span> <span class="n">csvname_to_colnames_list</span><span class="p">)</span>
+<span class="go">[&#39;table1&#39;, &#39;table2&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Crystal Ball</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Winn Y. Cui.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
