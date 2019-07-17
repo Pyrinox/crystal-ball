@@ -126,7 +126,7 @@ class CrystalBall:
             return [any(keyword in colname for colname in all_colnames) for keyword in keywords]
 
         
-    def featureSearch(self, keywords: list, all_colnames: list=None, mode: str='UNION') -> list:
+    def featureSearch(self, keywords, all_colnames=None, mode='UNION') -> list:
         """ Find the columns that contain the keywords.
 
         - Find features (column names) that contain the substrings specified in keywords. 

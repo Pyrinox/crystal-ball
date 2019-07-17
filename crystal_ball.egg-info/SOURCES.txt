@@ -1,7 +1,6 @@
 CHANGES.txt
 LICENSE.txt
 MANIFEST.in
-README.md
 setup.py
 crystal_ball.egg-info/PKG-INFO
 crystal_ball.egg-info/SOURCES.txt
