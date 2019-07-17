@@ -33,6 +33,8 @@ release = '0.1'
 extensions = ['sphinx.ext.autosummary', 'sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon'
 ]
 
+master_doc = 'index'
+
 # http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
 autodoc_mock_imports = ["pandas", "seaborn", "matplotlib"]
 
