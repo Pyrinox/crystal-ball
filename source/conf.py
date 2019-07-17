@@ -30,7 +30,7 @@ release = '0.1'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx_markdown_builder', 'sphinx.ext.autosummary', 'sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon'
+extensions = ['sphinx.ext.autosummary', 'sphinx.ext.autodoc', 'sphinx.ext.coverage', 'sphinx.ext.napoleon'
 ]
 
 # http://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_mock_imports
