@@ -11,7 +11,7 @@ setuptools.setup(
     url='http://pypi.python.org/pypi/crystal-ball/',
     license='LICENSE.txt',
     description='Useful crystal-ball-related stuff.',
-    long_description=open('README.asc').read(),
+    long_description=open('README.md').read(),
     long_description_content_type="text/markdown",
     install_requires=[
         # "Django >= 1.1.1",

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+
+<article lang="en">
+<articleinfo>
+    <title>CrystalBall Documentation</title>
+</articleinfo>
+<simpara>If you have hundreds of csvs you need to quickly digest and understand, you can use crystal-ball to help with the onboarding and data exploration phase of your project. You will be able to immediately dive into an expansive data set without getting lost.</simpara>
+<section id="_crystalball_features">
+<title>CrystalBall Features</title>
+<itemizedlist>
+<listitem>
+<simpara>
+find specific columns and tables you may be interested in, but may have otherwise not known where to look.
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+walk through connections between different csvs,
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+compare and establish foreign key and primary key relationships by using simple boxplots
+</simpara>
+</listitem>
+<listitem>
+<simpara>
+dynamically create a master table of useful information while simultaneously recording your step-by-step process for future reference.
+</simpara>
+</listitem>
+</itemizedlist>
+</section>
+<section id="_installation_and_usage">
+<title>Installation and Usage</title>
+pip install crystal-ball</programlisting>
+<simpara>You can start using CrystalBall right away by importing it and initializing it with a relative directory containing the CSVs.</simpara>
+<programlisting language="python" linenumbering="unnumbered">import crystalball as cb
+
+ball = cb.run("insert relative directory here")</programlisting>
+</section>
+<section id="_methods">
+<title>Methods</title>
+<simpara>Note that all methods that involve searching via keynames are case sensitive.</simpara>
+<section id="_cb_contains_keywords_list_all_colnames_list_none_8594_list">
+<title>cb.contains(keywords: list, all_colnames: list=None) &#8594; list</title>
+<simpara>Check if keywords exist in all_colnames.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_featuresearch_keywords_list_all_colnames_list_none_8594_list">
+<title>cb.featureSearch(keywords: list, all_colnames: list=None) &#8594; list</title>
+<simpara>Find the columns that contain the keywords.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_tablesearch_keywords_list_csvname_to_colnames_list_none_mode_str_emphasis_union_emphasis_8594_list">
+<title>cb.tableSearch(keywords: list, csvname_to_colnames_list=None, mode: str=<emphasis>UNION</emphasis>) &#8594; list</title>
+<simpara>Find the tables that contain the keywords.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_opentable_rel_dir_str_indices_list_0_8594_dataframe">
+<title>cb.openTable(rel_dir: str, indices: list=[0]) &#8594; DataFrame</title>
+<simpara>Open the csv that is referenced by the given relative directory.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_subtable_supertable_dataframe_chosen_index_list_chosen_columns_list_8594_dataframe">
+<title>cb.subTable(supertable: DataFrame, chosen_index: list, chosen_columns: list) &#8594; DataFrame</title>
+<simpara>Create a subtable from a supertable.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_mergetables_tables_list_8594_dataframe">
+<title>cb.mergeTables(tables: list) &#8594; DataFrame</title>
+<simpara>Sequentially merge a list of tables that all share a common index.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_analyzerelationships_to_analyze_list_visualize_bool_true_8594_dataframe">
+<title>cb.analyzeRelationships(to_analyze: list, visualize: bool=True) &#8594; DataFrame</title>
+<simpara>Analyze basic stats of one or more different Series.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_comparerelationship_to_analyze1_series_to_analyze2_series_visualize_bool_false_8594_dataframe">
+<title>compareRelationship(to_analyze1: Series, to_analyze2: Series, visualize: bool=False) &#8594; DataFrame</title>
+<simpara>Compare and contrast the difference between two Series.</simpara>
+<simpara><?asciidoc-hr?></simpara>
+</section>
+<section id="_cb_export_df_to_export_dataframe_write_to_str_export_type_str_emphasis_csv_emphasis_8594_none">
+<title>cb.export(df_to_export: DataFrame, write_to: str, export_type: str=<emphasis>CSV</emphasis>) &#8594; None</title>
+<simpara>Exports contents of dataframe to relative location specified by write_to arg.</simpara>
+</section>
+</section>
+</article>
