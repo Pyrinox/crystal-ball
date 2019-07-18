@@ -236,7 +236,7 @@ class CrystalBall:
                 print("implement later")
 
         
-    def openTable(self, rel_dir, indices=[0], encoding='utf-8'):
+    def openTable(self, rel_dir, indices=None, encoding='utf-8'):
         """ Open the csv that is referenced by the given relative directory.
 
         Parameters
@@ -256,7 +256,8 @@ class CrystalBall:
         (link juptyer notebook)
         """
         df = pd.read_csv(rel_dir, engine='python', encoding=encoding , error_bad_lines=False)
-        df.set_index(list(df.columns[indices]), inplace=True)
+        if indices is not None:
+            df.set_index(list(df.columns[indices]), inplace=True)
         return df
         
         
@@ -284,7 +285,7 @@ class CrystalBall:
 
         combined = chosen_index.copy()
         combined.extend(chosen_columns)
-        subtable = supertable[combined].set_index(primary_keys)
+        subtable = supertable[combined].set_index(chosen_index)
         return subtable
         
         
@@ -467,5 +468,9 @@ class CrystalBall:
 #   check if a lower case letter surrounds either side of the keyword, implies that it is an interjection
 # create a function that let's you index into a python list with another list. useful for selecting many names at once 
 # from featureSearch result
+
+# format output of lists better... can actually use DataFrame for formatting
+# Print out "You have found the following column names/table names/etc." to make it easier for people to 
+# understand what they are seeing.
 
 

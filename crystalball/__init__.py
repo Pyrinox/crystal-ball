@@ -256,7 +256,7 @@ class CrystalBall:
         (link juptyer notebook)
         """
         df = pd.read_csv(rel_dir, engine='python', encoding=encoding , error_bad_lines=False)
-        if indices not None:
+        if indices is not None:
             df.set_index(list(df.columns[indices]), inplace=True)
         return df
         
