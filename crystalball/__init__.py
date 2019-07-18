@@ -468,4 +468,8 @@ class CrystalBall:
 # create a function that let's you index into a python list with another list. useful for selecting many names at once 
 # from featureSearch result
 
+# format output of lists better... can actually use DataFrame for formatting
+# Print out "You have found the following column names/table names/etc." to make it easier for people to 
+# understand what they are seeing.
+
 

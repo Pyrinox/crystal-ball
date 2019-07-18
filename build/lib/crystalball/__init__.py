@@ -126,7 +126,7 @@ class CrystalBall:
             return [any(keyword in colname for colname in all_colnames) for keyword in keywords]
 
         
-    def featureSearch(self, keywords, all_colnames=None, mode='UNION') -> list:
+    def featureSearch(self, keywords: list, all_colnames: list=None, mode: str='UNION') -> list:
         """ Find the columns that contain the keywords.
 
         - Find features (column names) that contain the substrings specified in keywords. 
@@ -236,7 +236,7 @@ class CrystalBall:
                 print("implement later")
 
         
-    def openTable(self, rel_dir, indices=[0]):
+    def openTable(self, rel_dir, indices=[0], encoding='utf-8'):
         """ Open the csv that is referenced by the given relative directory.
 
         Parameters
@@ -255,7 +255,7 @@ class CrystalBall:
         --------
         (link juptyer notebook)
         """
-        df = pd.read_csv(rel_dir, engine='python', encoding='utf-8', error_bad_lines=False)
+        df = pd.read_csv(rel_dir, engine='python', encoding=encoding , error_bad_lines=False)
         df.set_index(list(df.columns[indices]), inplace=True)
         return df
         
@@ -458,3 +458,14 @@ class CrystalBall:
             print('implemnt sql format')
         
     
+
+
+# to implement later
+# featureSearch should return a dictionary, where key is the index and value is the name of the feature
+# this makes it easier for people to select the feature they want
+# search function should also have an 'is_exact' option, to make search more precise.
+#   check if a lower case letter surrounds either side of the keyword, implies that it is an interjection
+# create a function that let's you index into a python list with another list. useful for selecting many names at once 
+# from featureSearch result
+
+
