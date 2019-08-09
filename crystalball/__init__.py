@@ -164,7 +164,7 @@ class CrystalBall:
                 for keyword in keywords:
                     if keyword in colname:
                         suggested_colnames.add(colname)
-            return sorted(list(suggested_colnames))
+            return pd.DataFrame( {'featureName': sorted(list(suggested_colnames))})
 
 
         if type(keywords) is not list:
@@ -282,6 +282,9 @@ class CrystalBall:
         --------
         (link juptyer notebook)
         """
+        ## chosen_columns should default to empty list
+        # if len(chosen_columns) == 0:
+            # use all the columns from supertable
 
         combined = chosen_index.copy()
         combined.extend(chosen_columns)
@@ -308,7 +311,17 @@ class CrystalBall:
         --------
         (link juptyer notebook)
         """
+
+        # replace sequential mergeing with concat...
+
         # TO IMPLEMENT LATER: other types of joins, merging by non-index
+        def chooseLargestString(string_list):
+            largest_string = string_list[0]
+            for string in string_list:
+                if len(string) > len(largest_string):
+                    largest_string = string
+            return largest_string
+        
         if len(tables) < 2:
             raise Exception("need at least two tables in order to merge")
         
@@ -321,14 +334,17 @@ class CrystalBall:
         max_num_of_rows = len(current_merge)
         num_of_dropped_rows += diff
         
+        index_names = [tables[0].index.name, tables[1].index.name]
+
         if len(tables) - 2 > 0:
             for i in range(2, len(tables)):
                 current_merge = current_merge.merge(table[i], how='inner', left_index=True, right_index=True)
                 diff = max_num_of_rows - len(current_merge)
                 max_num_of_rows = len(current_merge)
                 num_of_dropped_rows += diff
+                index_names.append(tables[i].index.name)
         print('Number of Dropped Rows: ',num_of_dropped_rows)
-        current_merge.index.name = tables[0].index.name
+        current_merge.index.name = chooseLargestString(index_names)
         # CHECK FOR MULTI INDEX CASE, WHETHER THE ABOVE LINE BREAKS
         return current_merge
     
@@ -362,6 +378,7 @@ class CrystalBall:
             boxplot_data.append(pair[1])
             boxplot_xtick_labels.append(new_name)
         
+        # add labels to the quartile ranges for exact measurment.
         if visualize:
             g = sns.boxplot(data=boxplot_data)
             g.set(
