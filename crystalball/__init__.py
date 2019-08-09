@@ -142,11 +142,11 @@ class CrystalBall:
         
         Returns
         --------
-        list[str]
-            - List will contain all features (column names) that contains one/all substrings found in keywords.
-            - List will be sorted in alphabetical order.
+        DataFrame
+            - DataFrame will contain all features (column names) that contains one/all substrings found in keywords.
+            - DataFrame will be sorted in alphabetical order.
 
-        Examples
+        Examples (update example, outputs a DataFrame instead of a list)
         --------
         >>> colnames = ['id', 'name', 'nameType', 'subSpeciesName', 'title']
         >>> cb.featureSearch(['name'], colnames) 

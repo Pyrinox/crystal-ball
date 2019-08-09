@@ -5,3 +5,4 @@ v<0.1.3>, <16/7/2019> -- Fix colname inconsistent naming issue.
 v<0.1.4>, <17/7/2019> -- Added encoding control to openTable method.
 v<0.1.5>, <18/7/2019> -- Fixed openTable, so it does not assume the first column is the index. Fixed subTable, changed var name from primary_keys to chosen_index for more clarity.
 v<0.1.6>, <18/7/2019> -- Fixed syntax error.
+v<0.1.7>, <9/8/2019> -- FeatureSearch outputs a dataframe.
