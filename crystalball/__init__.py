@@ -199,9 +199,9 @@ class CrystalBall:
 
         Returns
         --------
-        list[str]
-            - List will contain all tables that contain a match with keywords.
-            - List will be sorted in alphabetical order.
+        DataFrame
+            - DataFrame will contain all tables that contain a match with keywords.
+            - DataFrame will be sorted in alphabetical order.
 
         Examples
         --------
@@ -231,7 +231,7 @@ class CrystalBall:
                         keyword_checklist.append(columnNamesContainKeyword(keyword, self.csvname_to_colnames_list[csvname]))
                     if False not in keyword_checklist:
                         csv_matches.append(csvname)
-                return sorted(csv_matches)
+                return pd.DataFrame({'matchedTable': sorted(csv_matches)})
             else:
                 print("implement later")
 
